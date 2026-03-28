@@ -1,8 +1,10 @@
 FROM php:8.1-apache
 
-# Install system dependencies
+# Install system dependencies + Node.js 20
 RUN apt-get update && apt-get install -y \
     git curl libpng-dev libonig-dev libxml2-dev libzip-dev libpq-dev zip unzip \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && docker-php-ext-install pdo_mysql pdo_pgsql pgsql mbstring exif pcntl bcmath gd zip \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -17,6 +19,9 @@ RUN composer install --no-dev --no-scripts --no-interaction --optimize-autoloade
 
 # Copy full application
 COPY . .
+
+# Build frontend assets (Vite/Tailwind)
+RUN npm install && npm run build && rm -rf node_modules
 
 # Run post-install scripts (registers service providers etc.)
 RUN composer run-script post-autoload-dump || true
