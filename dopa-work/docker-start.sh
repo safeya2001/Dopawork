@@ -7,8 +7,9 @@ php artisan cache:clear
 php artisan view:clear
 php artisan route:clear
 
-# Run migrations with live env vars from Render
+# Run migrations + seed on first deploy
 php artisan migrate --force
+php artisan db:seed --force
 
 # Create storage symlink (ignore if already exists)
 php artisan storage:link || true
