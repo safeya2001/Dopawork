@@ -1,11 +1,13 @@
 #!/bin/bash
 set -e
 
-# Clear any cached config that may have baked-in wrong DB settings
+# Clear ALL caches so no stale compiled views or config from old Docker layers
 php artisan config:clear
 php artisan cache:clear
+php artisan view:clear
+php artisan route:clear
 
-# Run migrations with env vars from Render (no cache = reads live env vars)
+# Run migrations with live env vars from Render
 php artisan migrate --force
 
 # Create storage symlink (ignore if already exists)

@@ -26,6 +26,9 @@ RUN npm install && npm run build && rm -rf node_modules
 # Run post-install scripts (registers service providers etc.)
 RUN composer run-script post-autoload-dump || true
 
+# Delete any compiled views baked during build (will be recompiled at runtime)
+RUN rm -rf /var/www/html/storage/framework/views/*
+
 # Configure Apache to serve from /public
 COPY docker-apache.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
