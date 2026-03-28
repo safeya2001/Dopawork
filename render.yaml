@@ -17,7 +17,7 @@ services:
       - key: APP_DEBUG
         value: true
       - key: APP_KEY
-        generateValue: true
+        value: base64:I/oaF1TKpNn16ZtWxdY4qLmPLTiN0COnno9cs4wFUaQ=
       - key: APP_URL
         sync: false
       - key: DB_CONNECTION
