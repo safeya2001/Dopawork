@@ -27,11 +27,8 @@ RUN npm install && npm run build && rm -rf node_modules
 RUN composer run-script post-autoload-dump || true
 
 # Configure Apache to serve from /public
-RUN sed -i 's|DocumentRoot /var/www/html|DocumentRoot /var/www/html/public|g' \
-        /etc/apache2/sites-available/000-default.conf && \
-    echo '<Directory /var/www/html/public>\n    Options Indexes FollowSymLinks\n    AllowOverride All\n    Require all granted\n</Directory>' \
-        >> /etc/apache2/sites-available/000-default.conf && \
-    a2enmod rewrite
+COPY docker-apache.conf /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
 
 # Fix permissions
 RUN chown -R www-data:www-data /var/www/html \
