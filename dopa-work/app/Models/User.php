@@ -104,4 +104,10 @@ class User extends Authenticatable
         $locale = app()->getLocale();
         return $locale === 'ar' && $this->name_ar ? $this->name_ar : $this->name;
     }
+
+    // Used by Mail classes to send in user's preferred language
+    public function getPreferredLocaleAttribute(): string
+    {
+        return $this->locale ?? 'ar';
+    }
 }

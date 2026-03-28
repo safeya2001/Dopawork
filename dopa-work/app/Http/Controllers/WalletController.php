@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentProcessedMail;
 use App\Models\WalletTransaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class WalletController extends Controller
@@ -72,7 +74,7 @@ class WalletController extends Controller
             $before = $user->wallet_balance;
             $user->increment('wallet_balance', $amount);
 
-            WalletTransaction::create([
+            $tx = WalletTransaction::create([
                 'reference'      => WalletTransaction::generateReference(),
                 'user_id'        => $user->id,
                 'type'           => 'deposit',
@@ -83,6 +85,8 @@ class WalletController extends Controller
                 'description_ar' => "إيداع في المحفظة عبر {$method}",
                 'status'         => 'completed',
             ]);
+
+            try { Mail::to($user->email)->queue(new PaymentProcessedMail($tx)); } catch (\Throwable) {}
         });
 
         return redirect()->route('wallet.index')
