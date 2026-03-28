@@ -9,18 +9,21 @@
         $locale    = app()->getLocale();
         $isAr      = $locale === 'ar';
         $siteName  = $isAr ? config('platform.name_ar','دوبا وورك') : config('app.name','Dopa Work');
-        $pageTitle = trim(@yield('title')) ?: $siteName;
+        $pageTitle = trim($__env->yieldContent('title')) ?: $siteName;
         $fullTitle = $pageTitle . ' | ' . $siteName;
-        $metaDesc  = @yield('meta_description') ?: ($isAr
+        $metaDesc  = $__env->yieldContent('meta_description') ?: ($isAr
             ? 'منصة دوبا وورك للعمل الحر – تواصل مع أفضل المستقلين في الوطن العربي لتنفيذ مشاريعك بسرعة وأمان.'
             : 'Dopa Work – the leading Arabic freelance marketplace. Hire top freelancers or find your next job with secure escrow payments.');
-        $ogImage   = @yield('og_image') ?: asset('og-image.png');
-        $canonical = @yield('canonical') ?: url()->current();
+        $ogImage   = $__env->yieldContent('og_image') ?: asset('og-image.png');
+        $canonical = $__env->yieldContent('canonical') ?: url()->current();
         $altLocale = $isAr ? 'en' : 'ar';
         $altUrl    = url()->current(); // same URL, locale toggled via session
     @endphp
 
     <title>{{ $fullTitle }}</title>
+
+    {{-- Favicon (inline data URI – no file dependency) --}}
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23ea580c'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Arial,sans-serif' font-weight='900' font-size='42' fill='white'>d</text></svg>">
 
     {{-- SEO --}}
     <meta name="description"        content="{{ $metaDesc }}">
