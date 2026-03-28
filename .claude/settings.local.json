@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php --version)",
+      "Bash(composer --version)",
+      "Read(//c/xampp/php/**)",
+      "Read(//c/php/**)",
+      "Read(//c/laragon/bin/**)",
+      "Bash(/c/xampp/php/php.exe --version)",
+      "Read(//c/ProgramData/ComposerSetup/bin/**)",
+      "Read(//c/Users/JYIF2/AppData/Roaming/**)",
+      "Bash(ls /c/xampp/php/composer*)",
+      "Read(//c/Users/JYIF2/**)",
+      "Bash(ls \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/\")",
+      "Bash(cat \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/composer.json\")",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot\" -type f -name \"*.md\")",
+      "Bash(ls -la \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/\")",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/app\" -type d)",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/app/Models\" -type f -name \"*.php\")",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/database/migrations\" -type f -name \"*.php\")",
+      "Bash(ls:*)",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/app/Services\" -type f -name \"*.php\")",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/resources/views\" -type f)",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/app/Contracts\" -type f -name \"*.php\")",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/app/Http/Controllers/Api\" -type f -name \"*.php\")",
+      "Bash(wc:*)",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot\" -type f \\\\\\( -name \"*Wallet*\" -o -name \"*Payment*\" \\\\\\))",
+      "Bash(grep -E \"\\\\.\\(php|md\\)$\")",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/resources/lang\" -type f)",
+      "Bash(find '/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/app/Repositories' -type f -name *.php)",
+      "Bash(find \"/c/Users/JYIF2/Downloads/dopa_backend_laravel-development_copilot \\(1\\)/dopa_backend_laravel-development_copilot/app/Http/Resources\" -type f -name \"*.php\")",
+      "Bash(/c/xampp/php/php.exe /c/xampp/php/composer create-project laravel/laravel dopa-work --prefer-dist --no-interaction)",
+      "Bash(/c/xampp/php/php.exe artisan:*)"
+    ]
+  }
+}
