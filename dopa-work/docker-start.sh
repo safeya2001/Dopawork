@@ -1,12 +1,11 @@
 #!/bin/bash
 set -e
 
-# Cache config and routes for performance
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+# Clear any cached config that may have baked-in wrong DB settings
+php artisan config:clear
+php artisan cache:clear
 
-# Run migrations
+# Run migrations with env vars from Render (no cache = reads live env vars)
 php artisan migrate --force
 
 # Create storage symlink (ignore if already exists)
