@@ -19,7 +19,9 @@ services:
       - key: APP_KEY
         value: base64:I/oaF1TKpNn16ZtWxdY4qLmPLTiN0COnno9cs4wFUaQ=
       - key: APP_URL
-        sync: false
+        value: https://dopawork.onrender.com
+      - key: ASSET_URL
+        value: https://dopawork.onrender.com
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_HOST
