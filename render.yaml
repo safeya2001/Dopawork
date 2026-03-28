@@ -1,3 +1,9 @@
+databases:
+  - name: dopawork-db
+    databaseName: dopawork
+    user: dopawork
+    plan: free
+
 services:
   - type: web
     name: dopawork
@@ -15,17 +21,27 @@ services:
       - key: APP_URL
         sync: false
       - key: DB_CONNECTION
-        value: mysql
+        value: pgsql
       - key: DB_HOST
-        sync: false
+        fromDatabase:
+          name: dopawork-db
+          property: host
       - key: DB_PORT
-        value: "3306"
+        fromDatabase:
+          name: dopawork-db
+          property: port
       - key: DB_DATABASE
-        sync: false
+        fromDatabase:
+          name: dopawork-db
+          property: database
       - key: DB_USERNAME
-        sync: false
+        fromDatabase:
+          name: dopawork-db
+          property: user
       - key: DB_PASSWORD
-        sync: false
+        fromDatabase:
+          name: dopawork-db
+          property: password
       - key: MAIL_MAILER
         value: log
       - key: SESSION_DRIVER
